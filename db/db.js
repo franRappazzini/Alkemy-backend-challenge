@@ -1,12 +1,14 @@
+require("dotenv").config();
 const { Op } = require("sequelize");
 const { Sequelize, DataTypes } = require("sequelize");
 const modelPersonaje = require("./models/Personaje");
 const modelPelicula = require("./models/Pelicula");
 const modelGenero = require("./models/Genero");
+const { DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
 const sequelize = new Sequelize(
   // TODO hacer env
-  "postgres://postgres:123456@localhost:5432/alkemy_backend",
+  `postgres://${DB_USER}:${DB_PASSWORD}@localhost:5432/${DB_NAME}`,
   {
     logging: false,
   }
